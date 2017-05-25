@@ -10,7 +10,9 @@
 RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(startPushWork:(NSString *)apiKey{
     
+    NSString *s = apiKey;
+    
+    NSLog([NSString stringWithFormat:@"%@",s]);
     
 })
 @end
-  
