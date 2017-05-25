@@ -11,7 +11,7 @@ var pushManager = NativeModules.BDPushManager;
 
 const BDPushManager = React.createClass({
     render: function() {
-
+        return null;
     },
     //RN调用原生方法：
     startPushWork(apiKey)
