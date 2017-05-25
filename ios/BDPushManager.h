@@ -5,7 +5,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface RNBaiduPush : NSObject <RCTBridgeModule>
+@interface BDPushManager : NSObject <RCTBridgeModule>
 
 @end
   

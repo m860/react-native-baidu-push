@@ -1,6 +1,38 @@
+import React, { PropTypes } from 'react';
+import {
+    View,
+    requireNativeComponent,
+    NativeModules
 
-import { NativeModules } from 'react-native';
+} from 'react-native';
 
-const { RNBaiduPush } = NativeModules;
+var pushManager = NativeModules.BDPushManager;
 
-export default RNBaiduPush;
+
+const BDPushManager = React.createClass({
+
+    //RN调用原生方法：
+    startPushWork(apiKey)
+    {
+        pushManager.startPushWork(apiKey);
+    },
+    stopPushWork()
+    {
+        pushManager.stopPushWork();
+    },
+    resumePushWork()
+    {
+        pushManager.resumePushWork();
+    },
+    setPushTags(tags)
+    {
+        pushManager.setPushTags(tags);
+    },
+    removePushTags(tags){
+        pushManager.removePushTags(tags);
+    }
+
+});
+
+
+module.exports = BDPushManager;
