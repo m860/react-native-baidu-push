@@ -50,4 +50,20 @@ import RNBaiduPush from 'react-native-baidu-push';
 // TODO: What to do with the module?
 RNBaiduPush;
 ```
+
+## API
+
+## startPushWork
+
+## stopPushWork
+
+## resumePushWork
+
+## setPushTags
+
+## removePushTags
+
+### onPushStateChange
+
+## onMessage
   
