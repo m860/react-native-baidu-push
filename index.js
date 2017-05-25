@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
 
-const { RNBaiduPush } = NativeModules.BDMapManager;
+const { RNBaiduPush } = NativeModules.BDPushManager;
 
 export default RNBaiduPush;
