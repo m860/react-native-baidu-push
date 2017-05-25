@@ -15,4 +15,11 @@ RCT_EXPORT_METHOD(startPushWork:(NSString *)apiKey{
     NSLog([NSString stringWithFormat:@"%@",s]);
     
 })
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        
+    }
+    return  self;
+}
 @end
