@@ -7,7 +7,7 @@ react-native : 0.44.0
 
 ## Getting started
 
-`$ npm install react-native-baidu-push --save`
+`$ npm install https://github.com/m860/react-native-baidu-push.git --save`
 
 ### Mostly automatic installation
 
@@ -69,8 +69,6 @@ RNBaiduPush;
 
 ## listen(eventName:String,callback:Callback)
 
-eventName为对应平台的异步消处理接口
-
-callback是消息回调函数,参数和对应接口中的参数保持一致
-
-[Android] eventName可能的值包括:onBind, onMessage, onNotificationClicked, onNotificationArrived, onSetTags, onDelTags,onListTags, onUnbind
+    eventName为对应平台的异步消处理接口
+    callback是消息回调函数,参数和对应接口中的参数保持一致
+    [Android] eventName可能的值包括:onBind, onMessage, onNotificationClicked, onNotificationArrived, onSetTags, onDelTags,onListTags, onUnbind
