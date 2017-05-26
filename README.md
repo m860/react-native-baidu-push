@@ -1,6 +1,10 @@
 
 # react-native-baidu-push
 
+react-native : 0.44.0
+
+[Android] BaiduPush : 5.7.0.95
+
 ## Getting started
 
 `$ npm install react-native-baidu-push --save`
@@ -53,17 +57,20 @@ RNBaiduPush;
 
 ## API
 
-## startPushWork
+### startPushWork(api_key:String)
 
-## stopPushWork
+### stopPushWork()
 
-## resumePushWork
+### resumePushWork()
 
-## setPushTags
+### setPushTags(tags:String[])
 
-## removePushTags
+### removePushTags(tags:String[])
 
-### onPushStateChange
+## listen(eventName:String,callback:Callback)
 
-## onMessage
-  
+eventName为对应平台的异步消处理接口
+
+callback是消息回调函数,参数和对应接口中的参数保持一致
+
+[Android] eventName可能的值包括:onBind, onMessage, onNotificationClicked, onNotificationArrived, onSetTags, onDelTags,onListTags, onUnbind
