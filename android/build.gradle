@@ -32,5 +32,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    compile files('src/libs/pushservice-5.7.0.95.jar')
 }
   
