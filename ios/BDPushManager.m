@@ -1,5 +1,6 @@
 
 #import "BDPushManager.h"
+#import "BDPush-SDK-IOS-1.4.9.2/BPush.h"
 
 @implementation BDPushManager
 
@@ -13,6 +14,15 @@ RCT_EXPORT_METHOD(startPushWork:(NSString *)apiKey){
     NSString *s = apiKey;
     
     NSLog([NSString stringWithFormat:@"%@",s]);
+    
+    [BPush bindChannelWithCompleteHandler:^(id result, NSError *error) {
+        // 绑定返回值
+        if (result[@"response_params"][@"channel_id"]) {
+            
+        }
+        
+        
+    }];
     
 }
 
