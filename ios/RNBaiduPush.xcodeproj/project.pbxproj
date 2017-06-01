@@ -204,7 +204,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)../../../ios/pushDemo3/BDPush-SDK-IOS-1.4.9.2",
+					"$(SRCROOT)../../../ios/Frameworks/BDPush-SDK-IOS-1.4.9.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNBaiduPush;
@@ -223,7 +223,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)../../../ios/pushDemo3/BDPush-SDK-IOS-1.4.9.2",
+					"$(SRCROOT)../../../ios/Frameworks/BDPush-SDK-IOS-1.4.9.2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNBaiduPush;

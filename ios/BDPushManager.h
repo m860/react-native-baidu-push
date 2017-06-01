@@ -1,11 +1,14 @@
 
 #if __has_include("RCTBridgeModule.h")
 #import "RCTBridgeModule.h"
+#import "RCTEventDispatcher.h"
 #else
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface BDPushManager : NSObject <RCTBridgeModule>
 
+@interface BDPushManager : NSObject <RCTBridgeModule>
++(instancetype) shareInstance;
+-(void)receivedRemoteNotification:(NSDictionary *)data;
 @end
-  
+
