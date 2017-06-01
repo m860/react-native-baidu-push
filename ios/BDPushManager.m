@@ -10,19 +10,12 @@
 }
 RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(startPushWork:(NSString *)apiKey){
-    
-    NSString *s = apiKey;
-    
-    NSLog([NSString stringWithFormat:@"%@",s]);
-    
-    [BPush bindChannelWithCompleteHandler:^(id result, NSError *error) {
-        // 绑定返回值
-        if (result[@"response_params"][@"channel_id"]) {
-            
-        }
-        
-        
-    }];
+    if(apiKey)
+    {
+        [BPush registerChannel:nil apiKey:apikey pushMode:BPushModeDevelopment withFirstAction:@"打开" withSecondAction:@"关闭" withCategory:@"test" useBehaviorTextInput:YES isDebug:YES];
+        // 禁用地理位置推送 需要再绑定接口前调用。
+        [BPush disableLbs];
+    }
     
 }
 
