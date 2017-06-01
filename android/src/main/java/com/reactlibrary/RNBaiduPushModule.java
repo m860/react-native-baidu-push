@@ -66,10 +66,34 @@ public class RNBaiduPushModule extends ReactContextBaseJavaModule {
         Class module = RNBaiduPushModule.class;
         Field event = module.getField(eventName);
         event.set(null, callback);
-//        Field field = module.getDeclaredField(eventName);
-//        field.setAccessible(true);
-//        field.setInt(event, event.getModifiers() & ~Modifier.STATIC);
-//        event.set(null, promise);
     }
-
+    @ReactMethod
+    public void fetchLastClickedNotification(Callback callback) throws IOException {
+        String packageName = this.reactContext.getPackageName();
+        String filePath = "/data/data/" + packageName + "/__clicked_notification__";
+        File file = new File(filePath);
+        if (file.exists()) {
+            FileInputStream is = new FileInputStream(file);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String mResponse = new String(buffer);
+            String[] values = mResponse.split("\\|");
+            WritableMap map = Arguments.createMap();
+            if (values.length > 0) {
+                map.putString("title", values[0]);
+            }
+            if (values.length > 1) {
+                map.putString("description", values[1]);
+            }
+            if (values.length > 2) {
+                map.putString("customContentString", values[2]);
+            }
+            file.delete();
+            callback.invoke(map);
+        } else {
+            callback.invoke();
+        }
+    }
 }
