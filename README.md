@@ -67,7 +67,11 @@ RNBaiduPush;
 
 ### removePushTags(tags:String[])
 
-## listen(eventName:String,callback:Callback)
+### fetchLastClickedNotification(callback:Function)
+
+    获取点击的消息数据
+
+### listen(eventName:String,callback:Callback)
 
     eventName为对应平台的异步消处理接口
     callback是消息回调函数,参数和对应接口中的参数保持一致
