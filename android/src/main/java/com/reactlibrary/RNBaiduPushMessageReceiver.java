@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.Dynamic;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
@@ -51,18 +50,18 @@ public class RNBaiduPushMessageReceiver extends PushMessageReceiver {
 
     @Override
     public void onNotificationClicked(Context context, String s, String s1, String s2) {
-        String packageName = context.getApplicationContext().getPackageName();
-        try {
-            String values = String.format("%s|%s|%s", s, s1, s2);
-            FileWriter file = new FileWriter("/data/data/" + packageName + "/__clicked_notification__");
-            file.write(values);
-            file.flush();
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
-        context.startActivity(launchIntent);
+//        String packageName = context.getApplicationContext().getPackageName();
+//        try {
+//            String values = String.format("%s|%s|%s", s, s1, s2);
+//            FileWriter file = new FileWriter("/data/data/" + packageName + "/__clicked_notification__");
+//            file.write(values);
+//            file.flush();
+//            file.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+//        context.startActivity(launchIntent);
         RNBaiduPushModule.onNotificationClicked.invoke(s, s1, s2);
     }
 

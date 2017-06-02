@@ -1,13 +1,18 @@
 
 package com.reactlibrary;
 
+import android.app.Activity;
+import android.content.Intent;
+
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.WritableMap;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -67,30 +72,45 @@ public class RNBaiduPushModule extends ReactContextBaseJavaModule {
         Field event = module.getField(eventName);
         event.set(null, callback);
     }
+
     @ReactMethod
-    public void fetchLastClickedNotification(Callback callback) throws IOException {
-        String packageName = this.reactContext.getPackageName();
-        String filePath = "/data/data/" + packageName + "/__clicked_notification__";
-        File file = new File(filePath);
-        if (file.exists()) {
-            FileInputStream is = new FileInputStream(file);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            String mResponse = new String(buffer);
-            String[] values = mResponse.split("\\|");
+    public void fetchLastClickedNotification(Callback callback) {
+//        String packageName = this.reactContext.getPackageName();
+//        String filePath = "/data/data/" + packageName + "/__clicked_notification__";
+//        File file = new File(filePath);
+//        if (file.exists()) {
+//            FileInputStream is = new FileInputStream(file);
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            String mResponse = new String(buffer);
+//            String[] values = mResponse.split("\\|");
+//            WritableMap map = Arguments.createMap();
+//            if (values.length > 0) {
+//                map.putString("title", values[0]);
+//            }
+//            if (values.length > 1) {
+//                map.putString("description", values[1]);
+//            }
+//            if (values.length > 2) {
+//                map.putString("customContentString", values[2]);
+//            }
+//            file.delete();
+//            callback.invoke(map);
+//        } else {
+//            callback.invoke();
+//        }
+        Activity activity = this.getCurrentActivity();
+        Intent intent = activity.getIntent();
+        String title = intent.getStringExtra("title");
+        if (title != null) {
+            String description = intent.getStringExtra("description");
+            String customContentString = intent.getStringExtra("customContentString");
             WritableMap map = Arguments.createMap();
-            if (values.length > 0) {
-                map.putString("title", values[0]);
-            }
-            if (values.length > 1) {
-                map.putString("description", values[1]);
-            }
-            if (values.length > 2) {
-                map.putString("customContentString", values[2]);
-            }
-            file.delete();
+            map.putString("title", title);
+            map.putString("description", description);
+            map.putString("customContentString", customContentString);
             callback.invoke(map);
         } else {
             callback.invoke();

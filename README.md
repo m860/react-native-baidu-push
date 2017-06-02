@@ -55,6 +55,14 @@ import RNBaiduPush from 'react-native-baidu-push';
 RNBaiduPush;
 ```
 
+## Android推送消息需要使用自定义行为
+
+Intent Uri
+
+    #Intent;component=com.baidupushdemo/.MainActivity;S.description=DESCRIPTION;S.title=TILE;S.customContentString=CUSTOMCONTENTSTRING;end
+
+所有的消息内容需要按照Intent uri的方式传递给Activity,这样才能正确的接收到推送的消息
+
 ## API
 
 ### startPushWork(api_key:String)
