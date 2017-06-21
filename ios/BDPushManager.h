@@ -10,5 +10,6 @@
 @interface BDPushManager : NSObject <RCTBridgeModule>
 +(instancetype) shareInstance;
 -(void)receivedRemoteNotification:(NSDictionary *)data;
+-(void)receivedChannelID:(NSString *)channelID;
 @end
 

@@ -58,14 +58,11 @@ RCT_EXPORT_METHOD(startPushWork:(NSString *)apiKey){
         [BPush registerChannel: launchOptions apiKey:apiKey pushMode:BPushModeDevelopment withFirstAction:@"打开" withSecondAction:@"关闭" withCategory:@"test" useBehaviorTextInput:YES isDebug:YES];
         // 禁用地理位置推送 需要再绑定接口前调用。
         [BPush disableLbs];
-        
         // App 是用户点击推送消息启动
         NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         if (userInfo) {
             [BPush handleNotification:userInfo];
         }
-        
-        
     }
     
 }
@@ -84,12 +81,16 @@ RCT_EXPORT_METHOD(removePushTags:(NSArray *)tags){
     
 }
 
-
-
 -(void)receivedRemoteNotification:(NSDictionary *)data
 {
     [self.bridge.eventDispatcher sendAppEventWithName:@"OnReceivedRemoteNotification"
                                                  body:data];
+}
+
+-(void)receivedChannelID:(NSString *)channelID
+{
+    [self.bridge.eventDispatcher sendAppEventWithName:@"OnBPushRegistered"
+                                                 body:@{@"channelID":channelID}];
 }
 
 @end
