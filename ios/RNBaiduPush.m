@@ -1,12 +1,12 @@
 
-#import "BDPushManager.h"
+#import "RNBaiduPush.h"
 #import "BDPush-SDK-IOS-1.4.9.2/BPush.h"
 #import <React/RCTRootView.h>
 
-@implementation BDPushManager
+@implementation RNBaiduPush
 
 @synthesize bridge = _bridge;
-static BDPushManager* _instance = nil;
+static RNBaiduPush* _instance = nil;
 +(instancetype) shareInstance
 {
     static dispatch_once_t onceToken ;
@@ -25,12 +25,12 @@ static BDPushManager* _instance = nil;
 
 +(id) allocWithZone:(struct _NSZone *)zone
 {
-    return [BDPushManager shareInstance] ;
+    return [RNBaiduPush shareInstance] ;
 }
 
 -(id) copyWithZone:(struct _NSZone *)zone
 {
-    return [BDPushManager shareInstance] ;
+    return [RNBaiduPush shareInstance] ;
 }
 
 
